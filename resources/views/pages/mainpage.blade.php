@@ -2,13 +2,33 @@
 
 @section('content')
     <form action="/convert" method="post">
-        <input name="value" type="text">
-        <input
-                id="button"
-                type="submit"
-                value="Convert to pln"
-                class="button"
-        />
+        Zamień: {{ Form::text('kwota') }}
+        {{
+            Form::select('walutaBaza',
+                array(
+                    'USD' => 'USD',
+                    'PLN' => 'PLN'
+                )
+            )
+        }}
+        na:
+        {{
+            Form::select('walutaDocelowa',
+                array(
+                    'USD' => 'USD',
+                    'PLN' => 'PLN'
+                )
+            )
+        }}
+
+        {{ Form::submit('Konwertuj') }}
+        {{--<input--}}
+                {{--id="button"--}}
+                {{--type="submit"--}}
+                {{--value="Konwertuj"--}}
+                {{--class="button"--}}
+        {{--/>--}}
+
     {{ csrf_field() }}
     </form>
     
